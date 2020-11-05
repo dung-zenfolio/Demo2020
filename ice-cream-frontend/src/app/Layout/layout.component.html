@@ -1,0 +1,41 @@
+<div class ="div-alert">
+    <app-alert></app-alert>
+</div>
+<div class="row">
+    <app-loading></app-loading>
+    <div class="col-sm-12" style="background-image: url('assets/images/gelato-long-top-banner.jpg');">
+        <div class="col-sm-3" style="padding: 15px 0px 15px 15px;">
+            <img  src="assets/images/logo.png" class="img-fluid" >
+        </div>
+        <div class="col-sm-9"></div>
+    </div>
+    <div class="col-sm-12">
+            <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                      <!--<div class="navbar-header">
+                        <a class="navbar-brand" href="#"><img src="../../assets/logo.png" class="img-responsive"></a>
+                      </div>-->
+                      <ul class="nav navbar-nav" >
+                        <li routerLinkActive="active"><a [routerLink]="['/customermanagement']">Customer</a></li>
+                        <li routerLinkActive="active"><a [routerLink]="['/recipes']">Recipes</a></li>
+                        <li routerLinkActive="active"><a [routerLink]="['/order']">Order</a></li>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li *ngIf="displayLogOut"><a href="#" (click)="logOut()"><span class="glyphicon glyphicon-log-out" ></span> Logout</a></li>
+                        <li *ngIf="displayLogOut"><a [routerLink]="['/changepassword']" href="#"><span ></span> Change Password</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+    </div>
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-9 padding-top-divContent">
+                <router-outlet></router-outlet>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+</div>
+

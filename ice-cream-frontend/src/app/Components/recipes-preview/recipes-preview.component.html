@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Preview</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <img style="width: 250px; height: 250px;" src="assets/{{ recipeModel.Image }}" class="img-responsive">
+        <label>View: {{recipeModel.ViewNumber}}</label>
+    </div>
+    <div class="col-sm-9">
+        <textarea disabled rows="12" [ngModel]="recipeModel.Description" style="width: 80%;" ></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+            <textarea disabled rows="12" [ngModel]="recipeModel.Details" style="width: 80%;" ></textarea>
+    </div>
+</div>

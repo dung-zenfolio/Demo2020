@@ -1,0 +1,9 @@
+.padding-top-divContent{
+    padding-top: 40px !important;
+}
+
+.div-alert{
+    position: fixed;
+    z-index: 9999;
+    
+}

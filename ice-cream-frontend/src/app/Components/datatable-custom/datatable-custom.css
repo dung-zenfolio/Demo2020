@@ -1,0 +1,562 @@
+.div-overflow{
+}
+
+.table-custom{
+    width: 100%;
+    position: relative;
+}
+
+.table-custom thead th.sorting:after {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    float: right;
+    font-family: FontAwesome;
+    content: "\F0DC";
+    color: #808080;
+    font-size: 10pt;
+    display: block;
+}
+
+.table-custom thead th.sorting_asc:after {
+    content: "\F0DE";
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    float: right;
+    font-family: FontAwesome;
+    color: #ddd;
+    font-size: 10pt;
+    display: block;
+}
+
+.table-custom thead th.sorting_desc:after {
+    content: "\F0DD";
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    float: right;
+    font-family: FontAwesome;
+    color: #ddd;
+    font-size: 10pt;
+    display: block;
+}
+
+.table-custom thead tr th{
+    padding: 10px 15px 10px 10px;
+    background-color: rgb(127, 11, 177);
+    color: white;
+    text-align: left;
+    font-size: 10pt;
+    border-style: solid;
+    border-color: rgb(127, 11, 177);
+    border-width: 0.5px;
+    border-spacing: 0;
+    cursor: pointer;
+    position: relative;
+    vertical-align: top;
+}
+
+.table-custom thead tr th {
+    border-right-color: white;
+}
+
+.table-custom thead tr th:last-child {
+    border-right-color: rgb(127, 11, 177) !important;
+}
+
+.table-custom tbody tr {
+    height: 34px;
+}
+
+
+.table-custom tbody tr:hover {
+    background-color: #e0dfdf;
+}
+
+.table-custom tbody tr td:first-child{
+    border-left-color: rgb(127, 11, 177);
+}
+
+.table-custom .border-bottom td{
+    border-bottom: 1px solid rgb(127, 11, 177) !important;
+}
+
+.table-custom span{
+    float: right;
+    font-size: 8pt !important;
+}
+
+.table-custom .span-sort{
+    color: white;
+}
+
+.table-custom .span-disable{
+    color: #808080;
+}
+
+.table-custom tbody tr td:last-child{
+    border-right-color: rgb(127, 11, 177);
+}
+
+.table-custom tbody tr:last-child td:first-child{
+    border-left-color: rgb(127, 11, 177);
+}
+
+.table-custom tbody tr:last-child td:last-child{
+    border: 1px solid #ddd;
+    border-right-color: rgb(127, 11, 177);
+}
+
+.table-custom tbody tr td {
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #ddd;
+    font-size: 10pt;
+}
+
+.table-custom tbody tr td .spantext{
+    text-align: left;
+    font-size: 9pt !important;
+    width: 100%;
+}
+
+.table-custom tbody tr td .spantext-right {
+    text-align: right;
+    font-size: 9pt !important;
+    width: 100%;
+    float: right;
+}
+
+.table-custom tbody tr td .spantext-center {
+    text-align: center;
+    font-size: 9pt !important;
+    width: 100%;
+}
+
+.table-td-nopadding{
+    padding: 0px 0px 0px 2px !important;
+}
+
+.span-top{
+    vertical-align:top;
+    margin-top: 1px;
+    margin-right: -10.5px;
+}
+
+.span-down{
+    vertical-align:bottom;
+    margin-top: 7px;
+}
+
+.span-hidden{
+    display: none;
+}
+
+.span-show{
+    display: block;
+    color: white !important;
+    margin-top: 4px;
+}
+
+.control-hide{
+    display: none;
+}
+
+.control-edit{
+    width: 80%;
+    max-width: 150px;
+    text-align:left;
+}
+
+span.k-datepicker, span.k-numerictextbox{
+    float:left;
+    width:90%;
+    font-size: 11pt;
+}
+
+tr:nth-child(even) {
+    background-color: #e9f2f2;
+}
+
+.ui-with-responsive{
+    display:none;
+}
+
+.label-validation{
+    color: red;
+    font-size: 9pt;
+    font-weight: 100;
+    display: block;
+}
+
+.validate-td{
+    border: 2px solid red !important;
+}
+
+.div-ControlEdit {
+    width: 100% !important;
+    max-width: 300px !important;
+    float: left !important;
+    padding: 0px 0px 0px 0px !important;
+    height: 30px;
+}
+
+.control-edit{
+    float: left !important;
+}
+
+.table-custom .empty-data-center{
+    text-align: center;
+    border-left:1px solid rgb(127, 11, 177) !important; 
+    border-bottom:1px solid rgb(127, 11, 177) !important; 
+    border-right:1px solid rgb(127, 11, 177) !important; 
+}
+
+@media only screen and (max-width: 900px) {
+	.div-overflow { overflow-x: scroll; }
+
+	.table-custom {
+		width: 1000px;
+		position: relative;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.div-overflow { overflow-x: hidden; }
+
+	.table-custom {
+		width: 100%;
+		position: relative;
+	}
+
+    .table-custom tbody td , table.dataTable tbody td h5 {
+        display: inline-block !important;
+    }
+
+    .table-custom tbody tr {
+        height: auto !important;
+    }
+
+    .table-custom thead {
+        display: none;
+    }
+
+    .ui-no-responsive{
+        display: none;
+    }
+
+    .ui-with-responsive{
+        display: block;
+        width: 100%;
+        padding: 0px 0px 0px 0px !important;
+    }
+
+    .div-responsive{
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        border-top: 1px solid #dddddd !important;
+        border-left: 1px solid #dddddd !important;
+        border-right: 1px solid #dddddd !important;
+        display:table;
+        width: 100%;
+    }
+
+    .div-responsive:last-child{
+        border-bottom: 1px solid #dddddd !important;
+    }
+
+    .table-custom tbody td {
+        display: block;
+        text-align: left;
+        width: 100%;
+        padding: 0px 0px 0px 0px !important;
+        border: none !important;
+    }
+
+    div.ui-table-cell-leftcolumn {
+        width: 45%;
+        display: table-cell;
+        font-size: 10pt;
+        font-weight: bold;
+        padding: 3px 5px 3px 5px;
+    }
+
+    div.ui-table-cell-rightcolumn {
+        width: 50%;
+        display: table-cell;
+        border-left: 1px solid #dddddd !important;
+        padding: 3px 5px 3px 5px;
+    }
+
+    .table-custom-green tbody td , table.dataTable tbody td h5 {
+        display: inline-block !important;
+    }
+
+    .table-custom-green thead {
+        display: none;
+    }
+
+    .table-custom-green tbody td {
+        display: block;
+        text-align: left;
+        width: 100%;
+        padding: 0px 0px 0px 0px !important;
+        border: none !important;
+    }
+
+    .table-custom-dark tbody td , table.dataTable tbody td h5 {
+        display: inline-block !important;
+    }
+
+    .table-custom-dark thead {
+        display: none;
+    }
+
+    .table-custom-dark tbody td {
+        display: block;
+        text-align: left;
+        width: 100%;
+        padding: 0px 0px 0px 0px !important;
+        border: none !important;
+    }
+
+    .div-checkboxAll {
+        width: 100%;
+        display: table-cell;
+        padding: 3px 5px 3px 5px;
+        text-align: center;
+    }
+}
+
+/*CSS for datetime picker*/
+.k-i-warning {
+    display: none;
+}
+
+.k-input {
+    font-size: 10pt !important;
+    color: #000000 !important;
+    font-family: Verdana,"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+
+span.k-datetimepicker {
+    background-color: #F3F3F3;
+    border: 1px solid #ccc;
+}
+
+span.k-datetimepicker:disabled {
+    border-radius: 3px;
+}
+
+.k-calendar-container.k-popup {
+    font-size: 10pt !important;
+    color: #000000 !important;
+    font-family: Verdana,"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+.k-calendar-container a {
+    font-size: 10pt !important;
+     color: #000000 !important;
+}
+
+/*Css for green table*/
+.green thead tr th{
+    background-color: #078616;
+    border-color: #078616;
+}
+
+.green thead tr th {
+    border-right-color: white;
+}
+
+.green thead tr th:last-child {
+    border-right-color: #078616 !important;
+}
+
+.green tbody tr td:first-child{
+    border-left-color: #078616;
+}
+
+.green .border-bottom td{
+    border-bottom: 1px solid #078616 !important;
+}
+
+.green tbody tr td:last-child{
+    border-right-color: #078616;
+}
+
+.green tbody tr:last-child td:first-child{
+    border-left-color: #078616;
+}
+
+.green tbody tr:last-child td:last-child{
+    border-right-color: #078616;
+}
+
+.green .empty-data-center{
+    border-left:1px solid #078616 !important; 
+    border-bottom:1px solid #078616 !important; 
+    border-right:1px solid #078616 !important; 
+}
+
+/*Css for paging*/
+.div-paging{
+    padding: 0px 15px 0px 15px;
+}
+
+.ul-paging{
+    margin-top: 3px;
+    float: right !important;
+}
+
+.ul-paging a:hover{
+    cursor: pointer;
+}
+
+.glyphicon-size{
+    font-size: 7pt;
+}
+
+/*Css for rose table*/
+.rose thead tr th{
+    background-color: rgb(198,161,207);
+    border-color: rgb(198,161,207);
+}
+
+.rose thead tr th {
+    border-right-color: white;
+}
+
+.rose thead tr th:last-child {
+    border-right-color: rgb(198,161,207) !important;
+}
+
+.rose tbody tr td:first-child{
+    border-left-color: rgb(198,161,207);
+}
+
+.rose .border-bottom td{
+    border-bottom: 1px solid rgb(198,161,207) !important;
+}
+
+
+.rose tbody tr td:last-child{
+    border-right-color: rgb(198,161,207);
+}
+
+.rose tbody tr:last-child td:first-child{
+    border-left-color: rgb(198,161,207);
+}
+
+.rose tbody tr:last-child td:last-child{
+    border-right-color: rgb(198,161,207);
+}
+
+.rose .empty-data-center{
+    border-left:1px solid rgb(198,161,207) !important; 
+    border-bottom:1px solid rgb(198,161,207) !important; 
+    border-right:1px solid rgb(198,161,207) !important; 
+}
+
+/*Css for yellow table*/
+.yellow thead tr th{
+    background-color: #fec600;
+    border-color: #fec600;
+}
+
+.yellow tbody tr td:first-child{
+    border-left-color: #fec600;
+}
+
+.yellow .border-bottom td{
+    border-bottom: 1px solid #fec600 !important;
+}
+
+
+.yellow tbody tr td:last-child{
+    border-right-color: #fec600;
+}
+
+.yellow tbody tr:last-child td:first-child{
+    border-left-color: #fec600;
+}
+
+.yellow tbody tr:last-child td:last-child{
+    border-right-color: #fec600;
+}
+
+.yellow .empty-data-center{
+    border-left:1px solid #fec600 !important; 
+    border-bottom:1px solid #fec600 !important; 
+    border-right:1px solid #fec600 !important; 
+}
+
+
+.highlight-control {
+    border: 1px solid rgb(89,207,255) !important;
+}
+
+span.pagingtext {
+    margin-top: 20px !important;
+}
+
+.div-record-form {
+    padding: 0px 0px 0px 0px;
+    width: 100%;
+    display: table;
+}
+
+.div-record {
+    padding-top: 0px;
+    padding-bottom: 1px;
+    padding-left: 0px;
+    padding-right: 12px;
+}
+
+.div-record label {
+    font-weight: normal !important;
+    font-size: 10pt;
+}
+
+.div-displayLength label {
+    float: right;
+    margin-right: -7px;
+}
+
+.table-custom tr.selected {
+    background-color: rgb(190,195,198);
+}
+
+.table-custom tr.selected:hover {
+    background-color: rgb(190,195,198) !important;
+}
+
+.highlight-blue .spantext,
+.highlight-blue .spantext-center,
+.highlight-blue .spantext-right {
+    color: blue;
+    font-weight: bold;
+}
+
+.highlight-red .spantext,
+.highlight-red .spantext-center,
+.highlight-red .spantext-right
+{
+    color: red;
+    font-weight: bold;
+}
+
+.highlight-green .spantext,
+.highlight-green .spantext-center,
+.highlight-green .spantext-right {
+    color: green;
+    font-weight: bold;
+}
+
+.width-selection {
+    width: 30px;
+}
+
+.prevent-cursor {
+    cursor: not-allowed;
+}
+

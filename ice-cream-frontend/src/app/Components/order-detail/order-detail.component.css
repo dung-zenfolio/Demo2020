@@ -1,0 +1,30 @@
+div .div-row:first-child {
+    border-top: 1px;
+    border-top-style: solid;
+}
+
+.div-row{
+    display: table;
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    width: 100%;
+    position: relative;
+}
+
+.div-table-left{
+    display: table-cell;
+    width: 30%;
+    border-right: 1px;
+    border-right-style: solid;
+    padding: 5px 10px 5px 10px;
+}
+
+.div-table-right{
+    display: table-cell;
+    width: 70%;
+    padding: 5px 10px 5px 10px;
+}

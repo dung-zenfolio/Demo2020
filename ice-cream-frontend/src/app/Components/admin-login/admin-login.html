@@ -1,0 +1,25 @@
+
+    <div class="col-sm-12 center-align">
+        <h3>Login</h3>
+    </div>
+    <div class="form-horizontal ">
+        <div class="row form-group">
+            <label class="control-label col-sm-5">UserName</label>
+            <div class="col-sm-7">
+                <input style="width: 200px;" class="form-control" type="text" [(ngModel)]="username">
+            </div>
+        </div>
+
+    </div>
+    <div class="form-horizontal">
+        <div class="row form-group">
+            <label class="control-label col-sm-5">Password</label>
+            <div class="col-sm-7">
+                <input style="width: 200px;" class="form-control" type="password" [(ngModel)]="password">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 center-align">
+        <button type="submit" (click)="login()">Login</button>
+    </div>

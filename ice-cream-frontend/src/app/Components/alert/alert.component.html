@@ -1,0 +1,4 @@
+<div *ngIf="display" [ngClass]="{'alert-success': type == 0, 'alert-warning': type == 1, 'alert-danger': type == 2 }" class="alert alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close" (click)="close()">&times;</a>
+    <strong>{{showStrongMessage()}}</strong>{{message}}
+  </div>

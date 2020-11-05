@@ -1,0 +1,17 @@
+<div class="row form-group ">
+    <label class="form-label col-sm-2 div-label">Username</label>
+    <div class="col-sm-4 form-inline div-padding">
+        <input type="text" class="form-control" [(ngModel)]="userfind">
+        <button class="btn btn-default" (click)="findUsername()">Find</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <custom-datatables [option]="buildDatatableOption()" (dataOutput)="getDataChange($event)"></custom-datatables>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <button class="btn btn-default" (click)="UpdateCustomerEnabled()" >Update</button>
+    </div>
+</div>

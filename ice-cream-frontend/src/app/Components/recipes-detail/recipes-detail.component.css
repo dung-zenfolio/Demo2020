@@ -1,0 +1,11 @@
+input, textarea {
+    width: 50%;
+}
+
+.textLeft{
+    float: left;
+}
+
+.marginLeft{
+    margin-right: 10px;
+}

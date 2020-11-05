@@ -1,0 +1,183 @@
+<div class="row">
+        <div *ngIf="option.Paging && option.CanShowRowPerPage" class="col-sm-4 col-xs-6 col-sm-offset-8 col-xs-offset-6 div-record">
+            <div class="col-sm-12">
+                <div class="form-inline div-displayLength">
+                    <label>
+                        <select class="form-control" [value]="selectedDisplayLength" (change)="changeDisplayLength($event.target.value)">
+                            <option *ngFor="let numberRecords of option.ListDisplayLength" value="{{numberRecords}}">{{numberRecords}}</option>
+                        </select>
+                        records per page
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 div-overflow">
+            <table id="{{option.Id}}" Class="table-custom" [ngClass]="{'green': option.TableStyle==1, 'rose': option.TableStyle==2, 'yellow': option.TableStyle==3, 'purple': option.TableStyle==4 }" cellspacing="0" cellpadding="0" #tableCustom>
+                <thead>
+                    <tr>
+                        <th *ngIf="option.SelectedColumn" class="width-selection">
+                            <input type="checkbox" [checked]="selectedAllData" (change)="checkedAllData()" />
+                        </th>
+                        <ng-container *ngFor="let column of columns, trackBy: trackDataNgFor">
+                            <th *ngIf="column.Visible" class="sorting" #header id="{{column.PropertyName}}" 
+                                (click)="sortDatabutton(header, column.PropertyName)" width="{{column.width}}">
+                                {{column.ColumnName}}
+                            </th>
+                        </ng-container>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngIf="!responsive">
+                        <tr *ngIf="!hasData">
+                            <td [attr.colspan]="colspanNodata" class="empty-data-center">{{option.EmptyTableMessage}}</td>
+                        </tr>
+                        <ng-container *ngFor="let data of dataSource, let index = index, let last = last, trackBy: trackDataNgFor">
+                            <tr tabindex="-1"
+                                *ngIf="showItemForPaging(index)" class="ui-no-responsive"
+                                [ngClass]="{'border-bottom': showBorderBottomGrid(index), 'selected': classSelectedData(index)}"
+                                #trbody>
+                                <td *ngIf="option.SelectedColumn" class="width-selection">
+                                    <input type="checkbox" [checked]="classSelectedData(index)" (change)="selectedCheckBox(index)" />
+                                </td>
+                                <ng-container *ngFor="let column of columns">
+                                    <td *ngIf="showControlCheckbox(column, index)" width="{{column.width}}">
+                                            <div class="div-ControlEdit" class="text-center">
+                                                    <input type="checkbox" [checked]="data[column.PropertyName]" (change)="changeCheckBoxValue(index, column)" />
+                                                </div>
+                                    </td>
+                                    <td *ngIf="column.Visible && !showControlCheckbox(column, index)" #tdbody
+                                        (click)="showSpanTextColumn(column, index) && selectedRow(index)"
+                                        [ngClass]="highlightCell(column, index)" width="{{column.width}}">
+
+                                        <span *ngIf="showSpanTextColumn(column, index)" [ngClass]="classAlignColumn(column, index)" [innerHTML]="renderFunction(data[column.PropertyName], data, column)">
+                                            
+                                        </span>
+                                        
+                                        <!--<div *ngIf="showControlNumeric(column, index)" class="div-ControlEdit">
+                                            <kendo-numerictextbox [ngClass]="classNumericTextBox(column, index)"
+                                                                  id="{{option.Id + 'inputnumber' + column.PropertyName + index}}"
+                                                                  [(value)]="data[column.PropertyName]"
+                                                                  (valueChange)="onRowChanged(data, column, index)"
+                                                                  [format]="formatService.numericFormat"
+                                                                  [min]="formatService.numericMinValue"
+                                                                  [max]="formatService.numericMaxValue"
+                                                                  [autoCorrect]="true"
+                                                                  [disabled]="actionList[column.PropertyName][index].disabled"
+                                                                  [focusCtrl]="actionList[column.PropertyName][index].focus"
+                                                                  (keyup)="enterValueEdit($event, tdbody, data, column, index, tdbodyres)"
+                                                                  (blur)="focusOutValueEdit($event, tdbody, data, column, index, tdbodyres)" #kendoNumber></kendo-numerictextbox>
+                                        </div>
+                                        <div *ngIf="showControlDateTime(column, index)" class="div-ControlEdit">
+                                            <kendo-datepicker [ngClass]="classDatePicker(column, index)"
+                                                              id="{{option.Id + 'datepicker' + column.PropertyName + index}}"
+                                                              [format]="formatService.dateFormat"
+                                                              [formatPlaceholder]="formatService.dateInputMessage"
+                                                              [max]="formatService.dateMax"
+                                                              [min]="formatService.dateMin"
+                                                              [value]="convertDateValue(data[column.PropertyName])"
+                                                              (valueChange)="valueChangeDate($event, column, index);onRowChanged(data, column, index)"
+                                                              [disabled]="actionList[column.PropertyName][index].disabled"
+                                                              [focusCtrl]="actionList[column.PropertyName][index].focus"
+                                                              (keyup)="enterValueEdit($event, tdbody, data, column, index, tdbodyres)"
+                                                              (blur)="focusOutValueEdit($event, tdbody, data, column, index, tdbodyres)" #kendoDate></kendo-datepicker>
+                                            <label class="label-validation control-hide"></label>
+                                        </div>-->
+                                    </td>
+                                </ng-container>
+                            </tr>
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="responsive">
+                        <ng-container *ngIf="option.SelectedColumn">
+                            <tr class="ui-with-responsive">
+                                <td>
+                                    <div #tdbodyres class="div-responsive">
+                                        <div class="div-checkboxAll">
+                                            <input type="checkbox" [checked]="selectedAllData" (change)="checkedAllData()" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        <ng-container *ngFor="let data of dataSource, let index = index, trackBy: trackDataNgFor">
+                            <tr tabindex="-1" *ngIf="showItemForPaging(index)"
+                                class="ui-with-responsive"
+                                [ngClass]="{'selected': classSelectedData(index)}"
+                                #trbody>
+                                <ng-container *ngFor="let column of columns, trackBy: trackDataNgFor">
+                                    <td *ngIf="column.Visible" [ngClass]="highlightCell(column, index)">
+                                        <div #tdbodyres class="div-responsive">
+                                            <div class="ui-table-cell-leftcolumn">{{column.ColumnName}}</div>
+                                            <div class="ui-table-cell-rightcolumn" (click)="showSpanTextColumn(column, index) && selectedRow(index)">
+                                                <span *ngIf="showSpanTextColumn(column, index)" [ngClass]="classAlignColumn(column, index)" [innerHTML]="renderFunction(data[column.PropertyName], data, column)"></span>
+                                                <div *ngIf="showControlCheckbox(column, index)" class="div-ControlEdit">
+                                                    <input type="checkbox" [(value)]="data[column.PropertyName]">
+                                                </div>
+                                                <!--<div *ngIf="showControlNumeric(column, index)" class="div-ControlEdit">
+                                                    <kendo-numerictextbox [ngClass]="classNumericTextBox(column, index)"
+                                                                          id="{{option.Id + 'inputnumber-res' + column.PropertyName + index}}" type="number"
+                                                                          [(value)]="data[column.PropertyName]"
+                                                                          (valueChange)="onRowChanged(data, column, index)"
+                                                                          [min]="formatService.numericMinValue"
+                                                                          [max]="formatService.numericMaxValue"
+                                                                          [autoCorrect]="true"
+                                                                          [disabled]="actionList[column.PropertyName][index].disabled"
+                                                                          [focusCtrl]="actionList[column.PropertyName][index].focus"
+                                                                          (keyup)="enterValueEdit($event, tdbody, data, column, index, tdbodyres)"
+                                                                          (blur)="focusOutValueEdit($event, tdbody, data, column, index, tdbodyres)" #kendoNumberres></kendo-numerictextbox>
+                                                </div>
+                                                <div *ngIf="showControlDateTime(column, index)" class="div-ControlEdit">
+                                                    <kendo-datepicker [ngClass]="classDatePicker(column, index)"
+                                                                      id="{{option.Id + 'datepicker-res' + column.PropertyName + index}}"
+                                                                      [format]="formatService.dateFormat"
+                                                                      [formatPlaceholder]="dateInputMessage"
+                                                                      [max]="formatService.dateMax"
+                                                                      [min]="formatService.dateMin"
+                                                                      [value]="convertDateValue(data[column.PropertyName])"
+                                                                      (valueChange)="valueChangeDate($event, column, index);onRowChanged(data, column, index)"
+                                                                      [disabled]="actionList[column.PropertyName][index].disabled"
+                                                                      [focusCtrl]="actionList[column.PropertyName][index].focus"
+                                                                      (keyup)="enterValueEdit($event, tdbody, data, column, index, tdbodyres)"
+                                                                      (blur)="focusOutValueEdit($event, tdbody, data, column, index, tdbodyres)" #kendoDateres></kendo-datepicker>
+                                                    <label class="label-validation control-hide"></label>
+                                                </div>-->
+                                            </div>
+                                        </div>
+                                    </td>
+                                </ng-container>
+                            </tr>
+                        </ng-container>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-12 dataTables_paginate">
+            <ul *ngIf="option.Paging" class="pagination ul-paging">
+                <!--<li>
+                    <a aria-label="First" data-toggle="tooltip" title="First" (click)="executeFirstPagingButton()">
+                        <span class="glyphicon glyphicon-step-backward glyphicon-size" aria-hidden="true"></span>
+                    </a>
+                </li>-->
+                <li class="paginate_button previous disabled">
+                    <a (click)="executePrePagingButton()">
+                        <span class="pagingtext">Previous</span>
+                        <!--<span class="glyphicon glyphicon-backward glyphicon-size" aria-hidden="true"></span>-->
+                    </a>
+                </li>
+                <li [ngClass]="{'active': showActivePage(paging)}" *ngFor="let paging of pagingDisplay"><a [ngClass]="{'prevent-cursor': preventClickPage(paging)}" (click)="executeLinkPaging(paging)">{{paging}}</a></li>
+                <li class="paginate_button next disabled">
+                    <a (click)="executeNextPagingButton()">
+                        <span class="pagingtext">Next</span>
+                        <!--<span class="glyphicon glyphicon-forward glyphicon-size" aria-hidden="true"></span>-->
+                    </a>
+                </li>
+                <!--<li>
+                    <a aria-label="Last" data-toggle="tooltip" title="Last" (click)="executeLastPagingButton()">
+                        <span class="glyphicon glyphicon-step-forward glyphicon-size" aria-hidden="true"></span>
+                    </a>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+    
+    

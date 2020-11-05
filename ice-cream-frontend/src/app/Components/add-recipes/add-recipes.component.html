@@ -1,0 +1,54 @@
+<div class="col-sm-12" [hidden]="preview">
+    <div class="row form-group">
+        <label class="control-label col-sm-3">Name</label>
+        <div class="col-sm-9">
+            <input type="text" [(ngModel)]="recipeModel.Name">
+        </div>
+    </div>
+    <div class="row form-group">
+        <label class="control-label col-sm-3">Image</label>
+        <div class="col-sm-9">
+            <input type="file" (change)="changeFile($event)">
+        </div>
+    </div>
+    <div class="row form-group">
+        <label class="control-label col-sm-3">Desciption</label>
+        <div class="col-sm-9">
+            <textarea rows="5" [(ngModel)]="recipeModel.Description"></textarea>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label class="control-label col-sm-3">Detail</label>
+        <div class="col-sm-9">
+            <textarea rows="5" [(ngModel)]="recipeModel.Details"></textarea>
+        </div>
+    </div>
+    <div class="row form-group">
+        <label class="control-label col-sm-3">Author</label>
+        <div class="col-sm-9">
+            <input type="text" [(ngModel)]="recipeModel.Author">
+        </div>
+    </div>
+    <div class="row form-group">
+        <label class="control-label col-sm-3">Upload Date</label>
+        <div class="col-sm-9">
+            <input type="text" disabled value="{{recipeModel.UploadDate | date:'dd/MM/yyyy'}}">
+        </div>
+    </div>
+    <div class="row form-group">
+        <label class="control-label col-sm-3">Enable Status</label>
+        <div class="col-sm-9">
+            <input type="checkbox" [checked]="recipeModel.EnableStatus" (change)="changeStatus($event)">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <button class="btn btn-default position-button" (click)="openPreview()">Preview</button>
+            <button class="btn btn-default" (click)="clearInfo()" >Clear</button>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-12" [hidden]="!preview">
+    <app-preview [recipeModel]="recipeModel" (backEdit)="backEdit()"></app-preview>
+</div>

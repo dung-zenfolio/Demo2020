@@ -1,0 +1,94 @@
+<div style="width: 100%;">
+    <div class="div-row">
+        <div class="div-table-left">
+            OrderID
+        </div>
+        <div class="div-table-right">
+            {{orderModel.ID}}
+        </div>
+    </div>
+    <div class="div-row">
+        <div class="div-table-left">
+            Name
+        </div>
+        <div class="div-table-right">
+            {{orderModel.Name}}
+        </div>
+    </div>
+    <div class="div-row">
+        <div class="div-table-left">
+            Email
+        </div>
+        <div class="div-table-right">
+            {{orderModel.Email}}
+        </div>
+    </div>
+    <div class="div-row">
+        <div class="div-table-left">
+            Contact
+        </div>
+        <div class="div-table-right">
+            {{orderModel.Contact}}
+        </div>
+    </div>
+
+    <div class="div-row">
+        <div class="div-table-left">
+            Address
+        </div>
+        <div class="div-table-right">
+            {{orderModel.Address}}
+        </div>
+    </div>
+    <div class="div-row">
+        <div class="div-table-left">
+            Book Cost
+        </div>
+        <div class="div-table-right">
+            {{orderModel.BookCost}}$
+        </div>
+    </div>
+    <div class="div-row">
+        <div class="div-table-left">
+            Paying Option
+        </div>
+        <div class="div-table-right">
+            {{orderModel.PayingOption}}
+        </div>
+    </div>
+    <div class="div-row">
+        <div class="div-table-left">
+            Order Date
+        </div>
+        <div class="div-table-right">
+            {{orderModel.OrderDate | date:'dd/MM/yyyy hh:mm:ss a'}}
+        </div>
+    </div>
+    <div class="div-row">
+        <div class="div-table-left">
+            Status
+        </div>
+        <div class="div-table-right">
+            {{orderModel.Status?'Completed':'Processing'}}
+        </div>
+    </div>
+</div>
+
+<div class="row form-group form-inline">
+    <div class="col-sm-12" style="padding-top: 10px;">
+        <label class="control-label">Process of this order is completed? </label>
+        &nbsp;
+        <select class="form-control" (change)="changeStatus($event.target.value)">
+            <option value="0" [selected]="orderModel.Status === false">Processing</option>
+            <option value="1" [selected]="orderModel.Status === true">Completed</option>
+        </select>
+
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 text-center" style="padding-top: 15px;">
+        <button class="btn btn-default" (click)="updateOrder()">Update Status</button>
+    </div>
+</div>
